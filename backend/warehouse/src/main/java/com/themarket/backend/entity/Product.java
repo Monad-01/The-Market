@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -13,8 +12,6 @@ import java.util.Date;
 @Table(name="product")
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
 public class Product {
 
     @Id
@@ -50,4 +47,8 @@ public class Product {
     @Column (name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private ProductCategory category;
 }
